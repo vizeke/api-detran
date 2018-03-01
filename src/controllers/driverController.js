@@ -30,11 +30,11 @@ module.exports = () => {
             .then( data => {
                 const resp = data.map( a => {
                     return {
-                        description: a.DescTipoInfracao,
-                        classification: a.DescClassificacaoInfracao,
+                        description: a.DescTipoInfracao.trim(),
+                        classification: a.DescClassificacaoInfracao.trim(),
                         points: +a.Pontuacao,
-                        place: a.localinfracao,
-                        district: a.municipioinfracao,
+                        place: a.localinfracao.trim(),
+                        district: a.municipioinfracao.trim(),
                         date: a.datahora,
                         plate: a.placa,
                         warning: a.Advertencia === 'true'

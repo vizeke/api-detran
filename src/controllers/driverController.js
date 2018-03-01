@@ -30,9 +30,9 @@ module.exports = () => {
             .then( data => {
                 const resp = data.map( a => {
                     return {
-                        description: a.desctipoinfracao,
-                        classification: a.descclassificacaoinfracao,
-                        points: +a.pontuacao,
+                        description: a.DescTipoInfracao,
+                        classification: a.DescClassificacaoInfracao,
+                        points: +a.Pontuacao,
                         place: a.localinfracao,
                         district: a.municipioinfracao,
                         date: a.datahora,

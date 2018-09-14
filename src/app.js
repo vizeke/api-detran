@@ -1,7 +1,13 @@
 require('dotenv').config()
+const configMiddleware = require('./config/apiMiddleware');
+const config = require('./config/app');
+
+if (config.env === 'production') {
+  require('newrelic');
 }
-const apiMiddleware = require( 'node-mw-api-prodest' ).middleware;
-const express = require( 'express' );
+
+const apiMiddleware = require('node-mw-api-prodest').middleware;
+const express = require('express');
 
 let app = express();
 
@@ -15,7 +21,7 @@ app.use( apiMiddleware( {
 } ) );
 
 // load our routes
-require( './routes/driverAcessoCidadao' )( app );
+require('./routes/driverAcessoCidadao')(app);
 
 app.use( apiMiddleware( {
     limit: {
@@ -38,19 +44,21 @@ app.use( apiMiddleware( {
 } ) );
 
 // load limited routes
-require( './routes/driver' )( app );
-require( './routes/vehicle' )( app );
+require('./routes/driver')(app);
+require('./routes/vehicle')(app);
 
-app.use( apiMiddleware( {
+app.use(
+  apiMiddleware({
     error: {
-        notFound: true,
-        debug: config.env === 'development'
+      notFound: true,
+      debug: config.env === 'development'
     }
-} ) );
+  })
+);
 
 let pathApp = express();
 
 let path = config.path;
-pathApp.use( path, app );
+pathApp.use(path, app);
 
 module.exports = pathApp;

@@ -1,7 +1,4 @@
-const configMiddleware = require( './config/apiMiddleware' );
-const config = require( './config/app' );
-if ( config.env === 'production' ) {
-    require( 'newrelic' );
+require('dotenv').config()
 }
 const apiMiddleware = require( 'node-mw-api-prodest' ).middleware;
 const express = require( 'express' );

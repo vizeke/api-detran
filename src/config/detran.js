@@ -34,5 +34,11 @@ module.exports = {
                 idleTimeoutMillis: 30000
             }
         }
+    },
+
+    debitsWS: {
+        serviceUrl: "https://novo.detrannet.dchm.es.gov.br/wsInternetbanking/serviceInternetBanking.asmx?wsdl",
+        user: process.env.DEBITWS_USER || 'usuario',
+        password: process.env.DEBITWS_PASSWORD || 'segredo',
     }
 };

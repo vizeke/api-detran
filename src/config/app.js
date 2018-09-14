@@ -1,5 +1,5 @@
 module.exports = {
-    env: process.env.NODE_ENV || '',
+    env: process.env.NODE_ENV || 'development',
     port: process.env.PORT || '4242',
     path: process.env.REQUEST_PATH || '',
     redisUrl: process.env.REDIS_URL || 'redis://redis:6379',

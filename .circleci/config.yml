@@ -70,6 +70,7 @@ workflows:
             tags:
               only: /.*/
       - publish:
+          context: Prodest
           requires:
             - build-docker
           filters:
@@ -78,6 +79,7 @@ workflows:
             tags:
               only: /^v[0-9]+(\.[0-9]+){2}-[0-9]+/ # v1.2.3-9
       - publish-prod:
+          context: Prodest
           requires:
             - build-docker
           filters:

@@ -44,8 +44,8 @@ jobs:
       - attach_workspace:
           at: ./
       - run:
-          node node_modules/upgrade_rancher/client.js 
-          --IMAGE prodest/api-detran:$CIRCLE_TAG
+          node node_modules/upgrade-rancher/client.js 
+          --IMAGE=prodest/api-detran:$CIRCLE_TAG
           --ENVIRONMENT=api 
           --STACK=api-developers 
           --SERVICE=api-detran 
@@ -58,8 +58,8 @@ jobs:
       - attach_workspace:
           at: ./
       - run:
-          node node_modules/upgrade_rancher/client.js 
-          --IMAGE prodest/api-detran:$CIRCLE_TAG 
+          node node_modules/upgrade-rancher/client.js 
+          --IMAGE=prodest/api-detran:$CIRCLE_TAG 
           --ENVIRONMENT=api 
           --STACK=api 
           --SERVICE=api-detran 

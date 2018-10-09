@@ -43,7 +43,13 @@ jobs:
     steps:
       - attach_workspace:
           at: ./
-      - run: ./node_modules/.bin/upgrade-rancher --IMAGE prodest/api-detran:$CIRCLE_TAG --SERVICE_ID 1s152
+      - run:
+          node node_modules/upgrade_rancher/client.js 
+          --IMAGE prodest/api-detran:$CIRCLE_TAG
+          --ENVIRONMENT=api 
+          --STACK=api-developers 
+          --SERVICE=api-detran 
+          --START_FIRST=true
   publish-prod:
     docker:
       - image: circleci/node:8
@@ -51,7 +57,13 @@ jobs:
     steps:
       - attach_workspace:
           at: ./
-      - run: ./node_modules/.bin/upgrade-rancher --IMAGE prodest/api-detran:$CIRCLE_TAG --SERVICE_ID 1s156
+      - run:
+          node node_modules/upgrade_rancher/client.js 
+          --IMAGE prodest/api-detran:$CIRCLE_TAG 
+          --ENVIRONMENT=api 
+          --STACK=api 
+          --SERVICE=api-detran 
+          --START_FIRST=true
 workflows:
   version: 2
   build-with-context:

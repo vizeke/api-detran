@@ -1,8 +1,7 @@
 module.exports = app => {
+  const vehicleController = require("../controllers/vehicleController")();
 
-    const vehicleController = require( '../controllers/vehicleController' )();
+  app.get("/vehicle", vehicleController.getData);
 
-    app.get( '/vehicle', vehicleController.getData );
-
-    app.get( '/vehicle/tickets', vehicleController.getTickets );
+  app.get("/vehicle/tickets", vehicleController.getTickets);
 };

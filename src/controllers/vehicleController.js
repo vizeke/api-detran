@@ -109,7 +109,12 @@ module.exports = () => {
             'Content-Type': 'application/pdf',
             'Content-Disposition': `attachment; filename=guia-detran.pdf`
           });
-          return res.end(Buffer.from(data.GerarGuiaResult.GuiaPDF.toString('utf-8'), 'base64'));
+          return res.end(
+            Buffer.from(
+              data.GerarGuiaResult.GuiaPDF.toString('utf-8'),
+              'base64'
+            )
+          );
         } else {
           return res.json(data.GerarGuiaResult.Guia);
         }
